@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd" >
+
+	<!-- ====================实例化bean的方式Begin==================== -->
+	<!-- 默认构造实例化 -->
+	<!--<bean id="dog1" class="com.sxdx.entity.Dog" lazy-init="true" scope="singleton"/>-->
+
+	<!-- 指定构造器实例化 -->
+<!--	<bean id="dog2" class="com.sxdx.entity.Dog">
+		<constructor-arg name="name" value="哈士奇"/>
+		<constructor-arg name="age" value="3"/>
+		&lt;!&ndash;此处通过构造器，将food注入到dog中&ndash;&gt;
+		<constructor-arg name="food" ref="food"/>
+	</bean>-->
+
+	<!-- 指定构造器实例化 -->
+<!--	<bean id="dog3" class="com.sxdx.entity.Dog" >
+		<property name="name" value="杜牧"/>
+		<property name="age" value="3"/>
+		&lt;!&ndash;此处通过Setter方法，将food注入到dog中&ndash;&gt;
+		<property name="food" ref="food"/>
+	</bean>-->
+
+	<!--<bean id="dogReplaceMethod" class="com.sxdx.entity.ReplaceDog" />
+	<bean id="dog5" class="com.sxdx.entity.Dog" >
+		<replaced-method name="sayGoodBye" replacer="dogReplaceMethod">
+			&lt;!&ndash; 区分重载方法, 对应方法名的方法只存在一个时，arg-type将不起作用&ndash;&gt;
+			<arg-type match="java.lang.String"/>
+		</replaced-method>
+	</bean>-->
+	<!--====================实例化bean的方式End==================== -->
+
+	<!--
+		利用静态工厂方法:
+		factory-method：静态工厂类的获取对象的静态方法
+		class:静态工厂类的全类名
+      -->
+
+	<!--<bean id="dog3" class="com.sxdx.entity.DogStaticFactory" factory-method="getInstances"/>-->
+
+	<!--
+        利用实例工厂方法:
+        factory-bean:指定当前Spring中包含工厂方法的beanId
+        factory-method:工厂方法名称
+      -->
+	<!--<bean id="dogInstanceFactory" class="com.sxdx.entity.DogInstanceFactory"/>
+	<bean id="dog4" factory-bean="dogInstanceFactory" factory-method="getInstances"/>-->
+
+
+</beans>
